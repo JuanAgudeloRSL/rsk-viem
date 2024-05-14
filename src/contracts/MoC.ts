@@ -1,4 +1,8 @@
-export const MoCContract = {
+import { getContract } from "viem";
+import { PublicClient } from "../config/clients";
+
+
+const MoCContractABI = {
     address: '0xE481663CB5E5C41CF528d146DC221D2489Fdc451',
     abi: [
       {
@@ -3496,4 +3500,11 @@ export const MoCContract = {
         "type": "function"
       }
     ]
-  }
+}
+
+// Contract instance
+export const Mocontract = getContract({
+  address: MoCContractABI.address as `0x${string}` || '',
+  abi: MoCContractABI.abi,
+  client: PublicClient
+});
